@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"; // Don't forget this import!
 import { useState, useEffect } from 'react'
+import Auth from "./Auth/Auth.jsx";
 
 
 const DemoHeader = () => {
@@ -56,7 +57,9 @@ const DemoHeader = () => {
                     <div className="flex items-center gap-5">
                         <button className='hidden sm:block text-sm hover:text-gray-600 transition-colors'>
                             Sign In
+                            
                         </button>
+                        <Auth/>
                         <button className={`bg-black text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-gray-800 transition-all w-[6.5rem] h-[2.3rem]
                         ${isActive ? 'bg-green-700' : 'bg-black'}
                         `}>
