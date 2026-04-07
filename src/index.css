@@ -2,4 +2,14 @@
 
 * {
   @apply m-0 p-0 box-border;
+  
+}
+
+@theme {
+  /* This defines the 'banner' color so you can use 'bg-banner' */
+  --color-banner: #ffc017; /* Medium's signature yellow */
+}
+
+.size {
+  @apply w-[95%] md:w-[90%] mx-auto;
 }
