@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react'
 import Auth from "./Auth/Auth.jsx";
 
 
-const DemoHeader = () => {
+const DemoHeader = (props) => {
 
     const [isActive, setIsActive] = useState(false)
+    const [modal, setModal] = useState(false)
 
     useEffect(() => {
         const scrollMe = () => {
@@ -55,11 +56,13 @@ const DemoHeader = () => {
 
                     {/* 4. Action Buttons */}
                     <div className="flex items-center gap-5">
-                        <button className='hidden sm:block text-sm hover:text-gray-600 transition-colors'>
+                        <button
+                        onClick={() => setModal(true)}
+                        className='hidden sm:block text-sm hover:text-gray-600 transition-colors'>
                             Sign In
                             
                         </button>
-                        <Auth/>
+                        <Auth modal={modal} setModal={setModal} />
                         <button className={`bg-black text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-gray-800 transition-all w-[6.5rem] h-[2.3rem]
                         ${isActive ? 'bg-green-700' : 'bg-black'}
                         `}>
