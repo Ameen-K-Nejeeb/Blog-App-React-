@@ -6,25 +6,17 @@ import DemoHeader from './components/Demo/DemoHeader.jsx'; // Added .jsx
 
 function App() {
   // In a real project, this will eventually come from Firebase Auth
-  const auth = false; 
+  const currentUser = false; 
 
   return (
     <BrowserRouter>
-
-      {auth ? <HomeHeader /> : <DemoHeader />}
-      
-
+      {currentUser ? <HomeHeader /> : <DemoHeader />}
         <Routes>
 
-          <Route 
-            path='/' 
-            element={auth ? <Home /> : <Navigate to="/demo" />} 
-          />
-          
-          <Route path='/demo' element={<Demo />} />
+          {currentUser &&<Route path='/' element={ <Home />} />}
+          {!currentUser &&<Route path='/demo' element={ <Demo />} />}
 
-
-          <Route path="*" element={<Navigate to={auth ? "/" : "/demo"} />} />
+          <Route path="*" element={<Navigate to={currentUser ? "/" : "/demo"} />} />
         </Routes>
 
     </BrowserRouter>

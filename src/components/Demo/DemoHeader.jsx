@@ -63,7 +63,9 @@ const DemoHeader = (props) => {
                             
                         </button>
                         <Auth modal={modal} setModal={setModal} />
-                        <button className={`bg-black text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-gray-800 transition-all w-[6.5rem] h-[2.3rem]
+                        <button 
+                        onClick={() => setModal(true)}
+                        className={`bg-black text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-gray-800 transition-all w-[6.5rem] h-[2.3rem]
                         ${isActive ? 'bg-green-700' : 'bg-black'}
                         `}>
                             Get Started
