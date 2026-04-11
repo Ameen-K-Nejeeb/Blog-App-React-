@@ -4,6 +4,7 @@ import Demo from './components/Demo/Demo.jsx';
 import HomeHeader from './components/Home/HomeHeader.jsx';
 import DemoHeader from './components/Demo/DemoHeader.jsx'; // Added .jsx
 import { Blog } from './Context/Context.jsx';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   // In a real project, this will eventually come from Firebase Auth
@@ -13,6 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       {currentUser ? <HomeHeader /> : <DemoHeader />}
+      <ToastContainer/>
         <Routes>
 
           {currentUser &&<Route path='/' element={ <Home />} />}

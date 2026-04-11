@@ -1,7 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Input from '../../../utils/Input';
+import { toast } from 'react-toastify';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../../../firebase/firebase';
 
 const SignIn = ({setSignReq}) => {
+
+  const navigate = useNavigate()
+
+  const [form, setForm] = useState({
+    email : "",
+    password : "",
+  })
+
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(form.email === "" || form.password === ""){
+      toast.error('All fields are required !!!');
+      return;
+    }
+
+    try{
+      setLoading(true)
+      await signInWithEmailAndPassword(auth, form.email, form.password);
+      navigate("/")
+      toast.success('User has been logged in ')
+    }catch (error){
+      toast.error(error.message)
+    }finally{
+      setLoading(false)
+    }
+
+    console.log(form)
+  }
+
   return (
     <div className="w-full max-w-[40rem] mx-auto mt-[5rem] text-center px-4">
       {/* 1. Typography improvement */}
@@ -16,15 +51,16 @@ const SignIn = ({setSignReq}) => {
       <br /><br />
 
       {/* 3. Form Layout Alignment */}
-      <form className='flex flex-col gap-6 items-center' action="">
+      <form onSubmit={handleSubmit} className='flex flex-col gap-6 items-center' action="">
         <div className="w-full sm:w-[20rem] flex flex-col gap-4">
-          <Input type='email' title='Email' />
-          <Input type='password' title='Password'/>
+          <Input form={form} setForm={setForm} type='email' title='email' />
+          <Input form={form} setForm={setForm} type='password' title='password'/>
         </div>
         
         {/* 4. Button Styling */}
-        <button className='px-6 py-2 text-lg w-25 fz- font-medium rounded-full bg-green-700
-          hover:bg-green-800 text-white  mx-auto transition-all active:scale-95 mt-4'>
+        <button className={`px-6 py-2 text-lg w-25 fz- font-medium rounded-full bg-green-700
+          hover:bg-green-800 text-white  mx-auto transition-all active:scale-95 mt-4
+            ${loading ? "opacity-50 pointer-events-none" : ""} `} >
           Sign In
         </button>
       </form>
