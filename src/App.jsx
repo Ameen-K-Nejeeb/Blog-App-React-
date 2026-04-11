@@ -3,10 +3,12 @@ import Home from './components/Home/Home.jsx';
 import Demo from './components/Demo/Demo.jsx';
 import HomeHeader from './components/Home/HomeHeader.jsx';
 import DemoHeader from './components/Demo/DemoHeader.jsx'; // Added .jsx
+import { Blog } from './Context/Context.jsx';
 
 function App() {
   // In a real project, this will eventually come from Firebase Auth
-  const currentUser = false; 
+  // const currentUser = false; 
+  const {currentUser} = Blog()
 
   return (
     <BrowserRouter>
