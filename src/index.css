@@ -30,3 +30,8 @@ body{
 .btn{
   @apply px-3 p-2 text-sm font-medium;
 }
+
+.write .ql-editor{
+  font-size:1.2rem !important;
+  padding: 0 !important;
+}

@@ -4,6 +4,8 @@ import './index.css'
 import App from './App'
 import Context from './Context/Context'
 import "react-toastify/dist/ReactToastify.css"
+import 'react-quill-new/dist/quill.bubble.css';
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

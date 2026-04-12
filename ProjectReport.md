@@ -16,3 +16,7 @@
 - [x] Update Account logic (Login / Logout)
 - [x] Add Navigation demo
 - [x] Update Firebase configuration
+
+### Libraries
+- npm i react-quill-new
+- np i react-tagsinput

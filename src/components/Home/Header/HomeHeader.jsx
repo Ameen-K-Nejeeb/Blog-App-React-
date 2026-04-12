@@ -4,16 +4,20 @@ import { CiSearch } from 'react-icons/ci'
 import { LiaEditSolid } from 'react-icons/lia'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { MdKeyboardArrowDown } from 'react-icons/md'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {Search} from './Search'
 import Modal from '../../../utils/Modal'
 import UserModal from './UserModal'
+import { Blog } from '../../../Context/Context'
 
 
 const HomeHeader = () => {
 
+  const {setPublish} = Blog()
   const [modal, setModal] = useState(false)
   const [searchModal, setSearchModal] = useState(false)
+  const {pathname} = useLocation()
+
 
   return (
     <header className='border-b border-grey-200 '>
@@ -26,10 +30,15 @@ const HomeHeader = () => {
         </div>
         {/* right side */}
         <div className='flex items-center gap-3 sm:gap-7'>
-          <Link to='/write' className='hidden md:flex items-center gap-1 text-grey-500'>
+          {pathname === '/write'? 
+          (<button
+            onClick={() => setPublish(true)}
+            className='btn !bg-green-700 !py-1 rounded-2xl text-white cursor-pointer'>Publish</button> ) : (
+            <Link to='/write' className='hidden md:flex items-center gap-1 text-grey-500'>
             <span className='text-3xl'><LiaEditSolid/></span>
             <span className='text-sm mt-2'>Write</span>
           </Link>
+          )}
           <span className='text-3xl text-greay-500 cursor-pointer'><IoMdNotificationsOutline/></span>
           <div className="flex items-center relative">
             <img onClick={() => setModal(true)} className='w-[2.3rem] hr-[2.3rem] object-cover rounded-full cursor-pointer' src="/profile.jpg" alt="profile-img" />
