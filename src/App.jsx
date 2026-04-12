@@ -5,6 +5,7 @@ import HomeHeader from './components/Home/Header/HomeHeader.jsx';
 import DemoHeader from './components/Demo/DemoHeader.jsx'; // Added .jsx
 import { Blog } from './Context/Context.jsx';
 import { ToastContainer } from 'react-toastify';
+import Write from './components/Home/Write/Write.jsx';
 
 function App() {
   // In a real project, this will eventually come from Firebase Auth
@@ -21,6 +22,7 @@ function App() {
           {!currentUser &&<Route path='/demo' element={ <Demo />} />}
 
           <Route path="*" element={<Navigate to={currentUser ? "/" : "/demo"} />} />
+          <Route path='/write' element={<Write/>} />
         </Routes>
 
     </BrowserRouter>
