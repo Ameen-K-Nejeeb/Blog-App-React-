@@ -51,7 +51,7 @@ const UserModal = ({ setModal }) => {
         {userModal.map((link, i) => (
           <Link
             onClick={() => setModal(false)}
-            className="flex items-center gap-2 text-gray-500 hover:text-black/70"
+            className="flex items-center gap-3 text-gray-500 hover:text-black/70 hover:bg-gray-50 p-2 my-1 rounded-md transition-all w-full"
             key={i}
             to={link.path}>
             <span className="text-2xl">{link.icon}</span>
@@ -60,7 +60,7 @@ const UserModal = ({ setModal }) => {
         ))}
       </div>
 
-      <button className="flex flex-col pt-5 cursor-pointer hover:text-black/70">Sign Out
+      <button className="flex flex-col place-self-center pt-5 cursor-pointer hover:text-black/70">Sign Out
       
         <span className="text-sm">{secretEmail(currentUser?.email)}</span>
       

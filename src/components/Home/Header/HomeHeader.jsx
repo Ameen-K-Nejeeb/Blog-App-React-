@@ -13,15 +13,16 @@ import UserModal from './UserModal'
 const HomeHeader = () => {
 
   const [modal, setModal] = useState(false)
+  const [searchModal, setSearchModal] = useState(false)
 
   return (
     <header className='border-b border-grey-200 '>
       <div className="size h-[60px] flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-6">
           <Link to={'/'}>
             <span className='text-5xl'><BsMedium/></span>
           </Link>
-          <Search/>
+          <Search modal={searchModal} setModal={setSearchModal}/>
         </div>
         {/* right side */}
         <div className='flex items-center gap-3 sm:gap-7'>
@@ -35,7 +36,7 @@ const HomeHeader = () => {
             <span onClick={() => setModal(true)} className='text-gray-500 cursor-pointer'><MdKeyboardArrowDown/></span>
             <Modal modal={modal} setModal={setModal}></Modal>
               
-              <div className={`${modal ? 'visible opacity-100%' : 'invisible opacity -0'} transition-all duration-200`}>
+              <div className={`${modal ? 'visible opacity-100%' : 'invisible opacity-0'} transition-all duration-200`}>
                 <UserModal/>
               </div>
 
